@@ -28,8 +28,8 @@ export class UserService {
     return `This action returns a #${id} user`;
   }
 
-  login(loginUser: LoginUserDto) {
-    return `This action updates a #${loginUser.email} user`;
+  login({ email, password }: LoginUserDto) {
+    return this.userRepository.findOneBy({ email, password });
   }
 
   remove(id: number) {
