@@ -19,3 +19,16 @@ Content-Type: application/json
   "password": "password"
 }
 ###
+
+POST http://localhost:3333/games/
+Content-Type: application/json
+
+{
+  "name": "Alan Wake 2",
+  "key": "wander@gmail.com",
+  "img": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn1.epicgames.com%2Foffer%2Fc4763f236d08423eb47b4c3008779c84%2FEGS_AlanWake2_RemedyEntertainment_S2_1200x1600-c7c8091ddac0f9669c8e5905bca88aaa&tbnid=ZjfYfFU1K7TByM&vet=12ahUKEwj-2ciXi66CAxXzuZUCHRRpBwcQMygBegQIARBS..i"
+}
+###
+
+GET http://localhost:3333/games/
+

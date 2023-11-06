@@ -25,14 +25,17 @@ export class UserService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.userRepository.findOneBy({ id });
   }
 
   login({ email, password }: LoginUserDto) {
     return this.userRepository.findOneBy({ email, password });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    const user: User | null = await this.findOne(id);
+    if (user) {
+      this.userRepository.remove(user);
+    }
   }
 }
