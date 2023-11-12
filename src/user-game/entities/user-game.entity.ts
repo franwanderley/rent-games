@@ -13,11 +13,15 @@ export class UserGame {
   active: boolean;
 
   @Column({
-    default: () => 'CURRENT_DATE',
+    default: () => 'CURRENT_TIMESTAMP',
+    type: 'timestamp',
   })
   beginDate: Date;
 
-  @Column()
+  @Column({
+    type: 'timestamp',
+    precision: 3,
+  })
   endDate: Date;
 
   @ManyToOne(() => Game, (game) => game.userGames)

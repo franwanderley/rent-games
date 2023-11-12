@@ -30,5 +30,13 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:3333/games/
+POST http://localhost:3333/user-game
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "gameId": 1,
+  "endDate": "2023-11-15 18:58:00.427165+00"
+}
+###
 
