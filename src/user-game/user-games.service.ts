@@ -25,7 +25,7 @@ export class UserGameService {
       id: dto?.gameId,
     });
     const userGame: UserGame = new UserGame();
-    userGame.endDate = new Date(dto?.endDate);
+    userGame.endDate = dto?.endDate;
     game && (userGame.game = game);
     user && (userGame.user = user);
     return this.userGameRepository.save(userGame);

@@ -3,8 +3,8 @@ Content-Type: application/json
 
 {
   "name": "wanderley santos",
-  "email": "wander@gmail.com",
-  "password": "password"
+  "email": "wandercom",
+  "password": "psod"
 }
 ###
 
@@ -34,9 +34,9 @@ POST http://localhost:3333/user-game
 Content-Type: application/json
 
 {
-  "userId": 1,
+  "userId": 2,
   "gameId": 1,
-  "endDate": "2023-11-15 18:58:00.427165+00"
+  "endDate": "2023-11-16 18:58:00.427165+00"
 }
 ###
 
