@@ -16,6 +16,12 @@ export class GamesService {
     return this.gameRepository.save(createGameDto);
   }
 
+  listGamesNotRented(): Promise<ListGameDto[]> {
+    return this.gameRepository.query(
+      'SELECT g.* FROM game g WHERE NOT EXISTS (SELECT * FROM user_game WHERE user_game.game_id = g.id and user_game.active = true)',
+    );
+  }
+
   findAll(): Promise<ListGameDto[]> {
     return this.gameRepository.find();
   }

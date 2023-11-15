@@ -1,6 +1,12 @@
 import { Game } from 'src/games/entities/game.entity';
 import { User } from 'src/user/entities/user.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class UserGame {
@@ -25,6 +31,7 @@ export class UserGame {
   endDate: Date;
 
   @ManyToOne(() => Game, (game) => game.userGames)
+  @JoinColumn({ name: 'game_id' })
   game: Game;
 
   @ManyToOne(() => User, (user) => user.userGames)

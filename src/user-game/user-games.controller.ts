@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { UserGameService } from './user-games.service';
 import { CreateUserGameDto } from './dto/create-user-game.dto';
 
@@ -9,5 +9,9 @@ export class UserGameController {
   @Post()
   create(@Body() createUserGameDto: CreateUserGameDto) {
     return this.userGamesService.create(createUserGameDto);
+  }
+  @Get()
+  findHasActive() {
+    return this.userGamesService.findHasActive();
   }
 }

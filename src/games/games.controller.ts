@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
+import { ListGameDto } from './dto/list-game.dto';
 
 @Controller('games')
 export class GamesController {
@@ -12,8 +13,13 @@ export class GamesController {
   }
 
   @Get()
-  findAll() {
+  findAll(): Promise<ListGameDto[]> {
     return this.gamesService.findAll();
+  }
+
+  @Get('not-rented')
+  listGamesNotRented(): Promise<ListGameDto[]> {
+    return this.gamesService.listGamesNotRented();
   }
 
   @Get(':id')

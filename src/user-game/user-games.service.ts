@@ -17,6 +17,10 @@ export class UserGameService {
     private readonly gameRepository: Repository<Game>,
   ) {}
 
+  findHasActive() {
+    return this.userGameRepository.findBy({ active: true });
+  }
+
   async create(dto: CreateUserGameDto) {
     const user: User | null = await this.userRepository.findOneBy({
       id: dto?.userId,
