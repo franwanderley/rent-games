@@ -22,6 +22,13 @@ export class GamesService {
     );
   }
 
+  listGamesByUserId(userId: number) {
+    return this.gameRepository.query(
+      'select game.* from game, user_game where user_game.user_id = $1 and user_game.game_id = game.id',
+      [userId],
+    );
+  }
+
   findAll(): Promise<ListGameDto[]> {
     return this.gameRepository.find();
   }

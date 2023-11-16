@@ -22,6 +22,11 @@ export class GamesController {
     return this.gamesService.listGamesNotRented();
   }
 
+  @Get('my-games/:userId')
+  listGamesByUserId(@Param('userId') userId: number) {
+    return this.gamesService.listGamesByUserId(userId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.gamesService.findOne(+id);

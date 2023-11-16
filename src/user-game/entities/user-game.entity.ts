@@ -35,5 +35,6 @@ export class UserGame {
   game: Game;
 
   @ManyToOne(() => User, (user) => user.userGames)
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }
