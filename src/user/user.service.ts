@@ -12,6 +12,10 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
+  validateUser(payload: any) {
+    return this.userRepository.findOneBy({ email: payload?.email });
+  }
+
   create(createUserDto: CreateUserDto) {
     const user: User = new User();
     user.name = createUserDto.name;

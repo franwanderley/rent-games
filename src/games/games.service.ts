@@ -38,6 +38,9 @@ export class GamesService {
   }
 
   remove(id: number) {
-    this.gameRepository.delete({ id });
+    this.gameRepository.query(
+      'delete from game g where g.id = $1 and not exists (select * from user_game where g.id = user_game.id)',
+      [id],
+    );
   }
 }

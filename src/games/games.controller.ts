@@ -1,7 +1,17 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+  Req,
+} from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { ListGameDto } from './dto/list-game.dto';
+import { JwtAuthGuard } from 'src/auth/JwtAuthGuardian';
 
 @Controller('games')
 export class GamesController {
@@ -17,8 +27,10 @@ export class GamesController {
     return this.gamesService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('not-rented')
-  listGamesNotRented(): Promise<ListGameDto[]> {
+  listGamesNotRented(@Req() request: any): Promise<ListGameDto[]> {
+    console.log(request?.user);
     return this.gamesService.listGamesNotRented();
   }
 

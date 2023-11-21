@@ -1,4 +1,4 @@
-POST http://localhost:3333/users
+POST http://localhost:3344/users
 Content-Type: application/json
 
 {
@@ -8,10 +8,10 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:3333/users
+GET http://localhost:3344/users
 ###
 
-POST http://localhost:3333/users/login
+POST http://localhost:3344/auth/login
 Content-Type: application/json
 
 {
@@ -30,7 +30,11 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:3333/user-game
+GET  http://localhost:3344/games/not-rented
+  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcwMDUyODcwMSwiZXhwIjoxNzAwNTI4OTAxfQ.Os5e6lu1Kc9J36qyZwHUmjZCI4qrpazFtxaDP6IU2LE
+###
+
+POST http://localhost:3344/user-game
 Content-Type: application/json
 
 {
