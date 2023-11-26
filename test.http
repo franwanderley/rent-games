@@ -22,16 +22,17 @@ Content-Type: application/json
 
 POST http://localhost:3344/games/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcwMTAwNDIxNCwiZXhwIjoxNzAxMDA0NDE0fQ.5Mg7iAjGC-z8WfCy9lGb8PP3B2Ja3OE85BMUgjPf9_I
 
 {
-  "name": "Starfield",
-  "key": "wander12@gmail.com",
-  "img": "https://images.app.goo.gl/ENuaireptdKdbR1w8"
+  "name": "Call of duty modern warfare 3",
+  "key": "wander34@gmail.com",
+  "img": "https://cdn.awsli.com.br/600x450/1313/1313910/produto/236258902/callofduty-wzfxzz658l.jpg"
 }
 ###
 
-GET  http://localhost:3344/games/not-rented
-  Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcwMDUyODcwMSwiZXhwIjoxNzAwNTI4OTAxfQ.Os5e6lu1Kc9J36qyZwHUmjZCI4qrpazFtxaDP6IU2LE
+GET  http://localhost:3344/games/my-games/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlckBnbWFpbC5jb20iLCJyb2xlIjoiVVNFUiIsImlhdCI6MTcwMTAwNDIxNCwiZXhwIjoxNzAxMDA0NDE0fQ.5Mg7iAjGC-z8WfCy9lGb8PP3B2Ja3OE85BMUgjPf9_I
 ###
 
 POST http://localhost:3344/user-game

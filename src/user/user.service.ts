@@ -12,8 +12,8 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  validateUser(payload: any) {
-    return this.userRepository.findOneBy({ email: payload?.email });
+  validateUser(email: string) {
+    return this.userRepository.findOneBy({ email });
   }
 
   create(createUserDto: CreateUserDto) {
