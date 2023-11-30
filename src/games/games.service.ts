@@ -12,7 +12,8 @@ export class GamesService {
     private readonly gameRepository: Repository<Game>,
   ) {}
 
-  create(createGameDto: CreateGameDto) {
+  async create(createGameDto: CreateGameDto) {
+    createGameDto.img = 'url';
     return this.gameRepository.save(createGameDto);
   }
 
