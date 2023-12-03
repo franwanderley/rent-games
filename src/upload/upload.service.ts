@@ -11,7 +11,6 @@ export class UploadService {
     const extension = file.originalname.slice(
       ((file.originalname.lastIndexOf('.') - 1) >>> 0) + 2,
     );
-    console.log(file.size);
 
     if (!extImages.includes(extension) || file.size > 100000) {
       throw new BadRequestException('Aceito somente imagens menor que 100 kb');

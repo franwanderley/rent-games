@@ -40,7 +40,7 @@ export class GamesController {
     @Body() createGameDto: CreateGameDto,
     @Req() request: FileRequest,
   ) {
-    if (request.user.role === 'ADMIN') {
+    if (request.user.role !== 'ADMIN') {
       throw new UnauthorizedException();
     }
     createGameDto.img = await this.uploadService.uploadImage(
