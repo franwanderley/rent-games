@@ -9,7 +9,6 @@ import {
   Req,
   UnauthorizedException,
   UseInterceptors,
-  UploadedFile,
 } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
@@ -17,33 +16,37 @@ import { ListGameDto } from './dto/list-game.dto';
 import { JwtAuthGuard } from 'src/auth/JwtAuthGuardian';
 import { User } from 'src/user/entities/user.entity';
 import { FilesInterceptor } from '@nestjs/platform-express';
+import { UploadService } from 'src/upload/upload.service';
 
 interface UserRequest extends Request {
   user: User;
 }
 
+interface FileRequest extends UserRequest {
+  files: Express.Multer.File[];
+}
+
 @Controller('games')
 export class GamesController {
-  constructor(private readonly gamesService: GamesService) {}
+  constructor(
+    private readonly gamesService: GamesService,
+    private readonly uploadService: UploadService,
+  ) {}
 
   @UseGuards(JwtAuthGuard)
   @Post()
   @UseInterceptors(FilesInterceptor('file'))
-  create(
+  async create(
     @Body() createGameDto: CreateGameDto,
-    @UploadedFile() file: Express.Multer.File,
-    @Req() request: UserRequest,
+    @Req() request: FileRequest,
   ) {
-    if (request.user.role !== 'ADMIN') {
+    if (request.user.role === 'ADMIN') {
       throw new UnauthorizedException();
     }
+    createGameDto.img = await this.uploadService.uploadImage(
+      request.files?.[0],
+    );
     return this.gamesService.create(createGameDto);
-  }
-
-  @Post('test')
-  @UseInterceptors(FilesInterceptor('file'))
-  teste(@Req() request: Request) {
-    console.log(request);
   }
 
   @Get()
