@@ -27,7 +27,7 @@ export class AuthService {
         { email: payload.email, role: payload.role },
         {
           secret: 'topSecret512',
-          expiresIn: '200s',
+          expiresIn: '1000s',
         },
       ),
     };
