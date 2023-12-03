@@ -6,15 +6,17 @@ import { UserModule } from './user/user.module';
 import { GamesModule } from './games/games.module';
 import { UserGameModule } from './user-game/user-game.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
       port: 5432,
-      host: 'ep-solitary-resonance-62747712.us-east-2.aws.neon.tech',
-      username: 'franwanderley',
-      password: 'b8vclQjdCRK6',
+      host: process.env.DATABASE_URL,
+      username: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
       database: 'rent-games',
       synchronize: true,
       autoLoadEntities: true,

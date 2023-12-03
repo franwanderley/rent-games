@@ -4,8 +4,6 @@ import * as FormData from 'form-data';
 
 @Injectable()
 export class UploadService {
-  private clientId: string = '864cda37e15513e';
-
   async validateImg(file: Express.Multer.File) {
     const extImages = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
     const extension = file.originalname.slice(
@@ -29,7 +27,7 @@ export class UploadService {
       url: 'https://api.imgur.com/3/image',
       data: formData,
       headers: {
-        Authorization: `Client-ID ${this.clientId}`,
+        Authorization: `Client-ID ${process.env.CLIENT_ID_IMGUR}`,
         ...formData.getHeaders(),
       },
     });
