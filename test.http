@@ -2,9 +2,9 @@ POST http://localhost:3344/users
 Content-Type: application/json
 
 {
-  "name": "wanderley santos",
-  "email": "wandercom",
-  "password": "psod"
+  "name": "teste cripto",
+  "email": "wander@yopmail.com",
+  "password": "teste123"
 }
 ###
 
@@ -15,8 +15,8 @@ POST http://localhost:3344/auth/login
 Content-Type: application/json
 
 {
-  "email": "wander@gmail.com",
-  "password": "password"
+  "email": "wander@yopmail.com",
+  "password": "teste123"
 }
 ###
 GET  http://localhost:3344/games/2
