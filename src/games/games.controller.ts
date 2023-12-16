@@ -12,7 +12,6 @@ import {
 } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
-import { ListGameDto } from './dto/list-game.dto';
 import { JwtAuthGuard } from 'src/auth/JwtAuthGuardian';
 import { User } from 'src/user/entities/user.entity';
 import { FilesInterceptor } from '@nestjs/platform-express';
@@ -50,12 +49,12 @@ export class GamesController {
   }
 
   @Get()
-  findAll(): Promise<ListGameDto[]> {
+  findAll() {
     return this.gamesService.findAll();
   }
 
   @Get('not-rented')
-  listGamesNotRented(): Promise<ListGameDto[]> {
+  listGamesNotRented() {
     return this.gamesService.listGamesNotRented();
   }
 

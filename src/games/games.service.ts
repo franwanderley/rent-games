@@ -16,25 +16,29 @@ export class GamesService {
     return this.gameRepository.save(createGameDto);
   }
 
-  listGamesNotRented(): Promise<ListGameDto[]> {
-    return this.gameRepository.query(
+  async listGamesNotRented() {
+    const games: Array<Game> = await this.gameRepository.query(
       'SELECT g.* FROM game g WHERE NOT EXISTS (SELECT * FROM user_game WHERE user_game.game_id = g.id and user_game.active = true)',
     );
+    return games?.map((game) => new ListGameDto(game));
   }
 
-  listGamesByUserId(userId: number) {
-    return this.gameRepository.query(
+  async listGamesByUserId(userId: number) {
+    const games: Array<Game> = await this.gameRepository.query(
       'select game.* from game, user_game where user_game.user_id = $1 and user_game.game_id = game.id',
       [userId],
     );
+    return games?.map((game) => new ListGameDto(game));
   }
 
-  findAll(): Promise<ListGameDto[]> {
-    return this.gameRepository.find();
+  async findAll() {
+    const games: Game[] = await this.gameRepository.find();
+    return games?.map((game) => new ListGameDto(game));
   }
 
-  findOne(id: number): Promise<ListGameDto | null> {
-    return this.gameRepository.findOneBy({ id });
+  async findOne(id: number) {
+    const game: Game | null = await this.gameRepository.findOneBy({ id });
+    return game ? new ListGameDto(game) : null;
   }
 
   remove(id: number) {
