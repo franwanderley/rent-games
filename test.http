@@ -25,11 +25,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlc
 
 POST http://localhost:3344/user-game
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlckB5b3BtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzAzNzA0OTI4LCJleHAiOjE3MDM3MDU5Mjh9.bjWRmi7iu77WeonuFCEFKqWclDCFWH0Vj5UStraPVUw
 
 {
-  "userId": 2,
-  "gameId": 1,
-  "endDate": "2023-11-16 18:58:00.427165+00"
+  "userId": 6,
+  "gameId": 7,
+  "endDate": "2024-01-10 18:58:00.427165+00"
 }
 ###
 
