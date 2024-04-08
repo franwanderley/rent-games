@@ -29,7 +29,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndhbmRlc
 
 {
   "userId": 6,
-  "gameId": 7,
+  "gameId": 2,
   "endDate": "2024-01-10 18:58:00.427165+00"
 }
 ###

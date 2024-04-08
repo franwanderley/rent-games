@@ -35,7 +35,6 @@ export class UserGameService {
       throw new BadRequestException('Game or User not found');
     }
     const isRented = await this.isRented(game.id);
-    console.log(isRented);
     if (isRented) {
       throw new BadRequestException('game is already rented');
     }
