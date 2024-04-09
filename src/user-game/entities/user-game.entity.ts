@@ -1,5 +1,5 @@
-import { Game } from 'src/games/entities/game.entity';
-import { User } from 'src/user/entities/user.entity';
+import { Game } from '../../games/entities/game.entity';
+import { User } from '../../user/entities/user.entity';
 import {
   Column,
   Entity,
@@ -32,9 +32,9 @@ export class UserGame {
 
   @ManyToOne(() => Game, (game) => game.userGames)
   @JoinColumn({ name: 'game_id' })
-  game: Game;
+  game?: Game;
 
   @ManyToOne(() => User, (user) => user.userGames)
   @JoinColumn({ name: 'user_id' })
-  user: User;
+  user?: User;
 }

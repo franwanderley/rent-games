@@ -2,10 +2,10 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserGameDto } from './dto/create-user-game.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from 'src/user/entities/user.entity';
-import { Game } from 'src/games/entities/game.entity';
+import { User } from '../user/entities/user.entity';
+import { Game } from '../games/entities/game.entity';
 import { UserGame } from './entities/user-game.entity';
-import { EmailService } from 'src/email/email.service';
+import { EmailService } from '../email/email.service';
 
 @Injectable()
 export class UserGameService {

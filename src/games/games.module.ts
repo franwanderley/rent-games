@@ -3,7 +3,7 @@ import { GamesService } from './games.service';
 import { GamesController } from './games.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Game } from './entities/game.entity';
-import { UploadService } from 'src/upload/upload.service';
+import { UploadService } from '../upload/upload.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Game])],
