@@ -5,7 +5,10 @@ import { Repository } from 'typeorm';
 import { User } from '../user/entities/user.entity';
 import { Game } from '../games/entities/game.entity';
 import { UserGame } from './entities/user-game.entity';
+
 import { EmailService } from '../email/email.service';
+import { Cron } from '@nestjs/schedule';
+import * as moment from 'moment';
 
 @Injectable()
 export class UserGameService {
@@ -53,5 +56,19 @@ export class UserGameService {
       [id],
     );
     return game?.length;
+  }
+
+  @Cron('45 * * * * *')
+  async desactiveRentGame() {
+    console.log('passou');
+    const userGames: UserGame[] = await this.userGameRepository.findBy({
+      active: true,
+    });
+    userGames.forEach((userGame: UserGame) => {
+      if (moment(new Date()).isAfter(moment(userGame.endDate))) {
+        userGame.active = false;
+        this.userGameRepository.save(userGame);
+      }
+    });
   }
 }
