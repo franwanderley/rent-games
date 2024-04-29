@@ -21,5 +21,5 @@ export class User {
   role: 'USER' | 'ADMIN';
 
   @OneToMany(() => UserGame, (userGame) => userGame.user)
-  userGames: UserGame[];
+  userGames?: UserGame[];
 }

@@ -16,15 +16,15 @@ export class Game {
   @Column({
     nullable: true,
   })
-  description: string;
+  description?: string;
 
   @Column()
   key: string;
 
   @OneToMany(() => UserGame, (userGame) => userGame.game)
-  userGames: UserGame[];
+  userGames?: UserGame[];
 
-  toDto(): ListGameDto {
+  toDto?(): ListGameDto {
     const { id, name, img, description } = this;
     const gameDto: ListGameDto = { id, name, description, img };
     return gameDto;
