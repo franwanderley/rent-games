@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserGameDto } from './dto/create-user-game.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from 'src/user/entities/user.entity';
-import { Game } from 'src/games/entities/game.entity';
+import { User } from '../user/entities/user.entity';
+import { Game } from '../games/entities/game.entity';
 import { UserGame } from './entities/user-game.entity';
+
+import { EmailService } from '../email/email.service';
 import { Cron } from '@nestjs/schedule';
 import * as moment from 'moment';
 
@@ -17,6 +19,7 @@ export class UserGameService {
     private readonly userRepository: Repository<User>,
     @InjectRepository(Game)
     private readonly gameRepository: Repository<Game>,
+    private readonly emailService: EmailService,
   ) {}
 
   findHasActive() {
@@ -30,11 +33,29 @@ export class UserGameService {
     const game: Game | null = await this.gameRepository.findOneBy({
       id: dto?.gameId,
     });
+
+    if (!game || !user) {
+      throw new BadRequestException('Game or User not found');
+    }
+    const isRented = await this.isRented(game.id);
+    if (isRented) {
+      throw new BadRequestException('game is already rented');
+    }
+
     const userGame: UserGame = new UserGame();
     userGame.endDate = dto?.endDate;
     game && (userGame.game = game);
     user && (userGame.user = user);
+    this.emailService.sendEmailKey(userGame);
     return this.userGameRepository.save(userGame);
+  }
+
+  async isRented(id: number) {
+    const game: Array<Game> = await this.gameRepository.query(
+      'SELECT g.* FROM game g WHERE g.id = $1 AND EXISTS (SELECT * FROM user_game WHERE user_game.game_id = g.id and user_game.active = true)',
+      [id],
+    );
+    return game?.length;
   }
 
   @Cron('45 * * * * *')

@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards } from '@nestjs/common';
 import { UserGameService } from './user-games.service';
 import { CreateUserGameDto } from './dto/create-user-game.dto';
-import { JwtAuthGuard } from 'src/auth/JwtAuthGuardian';
+import { JwtAuthGuard } from '../auth/JwtAuthGuardian';
 
 @Controller('user-game')
 export class UserGameController {

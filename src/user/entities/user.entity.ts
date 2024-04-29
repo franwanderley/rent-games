@@ -1,4 +1,4 @@
-import { UserGame } from 'src/user-game/entities/user-game.entity';
+import { UserGame } from '../../user-game/entities/user-game.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -21,5 +21,5 @@ export class User {
   role: 'USER' | 'ADMIN';
 
   @OneToMany(() => UserGame, (userGame) => userGame.user)
-  userGames: UserGame[];
+  userGames?: UserGame[];
 }

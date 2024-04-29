@@ -7,7 +7,7 @@ export class ListGameDto {
 
   img: string;
 
-  description: string;
+  description?: string;
 
   constructor(entity: Game) {
     this.id = entity.id;

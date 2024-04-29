@@ -12,10 +12,10 @@ import {
 } from '@nestjs/common';
 import { GamesService } from './games.service';
 import { CreateGameDto } from './dto/create-game.dto';
-import { JwtAuthGuard } from 'src/auth/JwtAuthGuardian';
-import { User } from 'src/user/entities/user.entity';
+import { JwtAuthGuard } from '../auth/JwtAuthGuardian';
+import { User } from '../user/entities/user.entity';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { UploadService } from 'src/upload/upload.service';
+import { UploadService } from '../upload/upload.service';
 
 interface UserRequest extends Request {
   user: User;
