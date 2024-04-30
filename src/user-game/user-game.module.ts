@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../user/entities/user.entity';
 import { Game } from '../games/entities/game.entity';
 import { EmailService } from '../email/email.service';
-
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
