@@ -60,7 +60,6 @@ export class UserGameService {
 
   @Cron('45 * * * * *')
   async desactiveRentGame() {
-    console.log('passou');
     const userGames: UserGame[] = await this.userGameRepository.findBy({
       active: true,
     });
