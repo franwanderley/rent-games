@@ -22,4 +22,5 @@ Um simples sistema de locadora de games usando o framework NestJS.
 * npm install
 * precisa criar .env com as informações segundo env-example
 * npm start
-Depois é só acessar em seu navegador localhost:3344/
+* Depois é só acessar em seu navegador localhost:3344/
+* localhost:3344/api para mapear endpoints
