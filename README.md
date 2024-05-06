@@ -1,6 +1,6 @@
 <h2>Sistema de alugar Games</h2>
 
-Um simples sistema de locadora de games usando o framework NestJS <img style="width: 10px; height: 10px vertical-align: middle" src="https://nestjs.com/logo-small-gradient.76616405.svg"/>.
+Um simples sistema de locadora de games usando o framework <img style="width: 20px; height: 20px vertical-align: middle" src="https://nestjs.com/logo-small-gradient.76616405.svg"/> NestJS.
 ### 🚀 Tecnologias Usadas
 * NestJs
 * Typescript
