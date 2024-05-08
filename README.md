@@ -18,7 +18,7 @@ Um simples sistema de locadora de games usando o framework <img style="width: 20
 ### 💻 Usar no seu PC
 * Baixar o Nodejs(18) e o npm
 * cd 'seu diretorio'
-* git clone [https://github.com/franwanderley/Ecoleta_NLW.git](https://github.com/franwanderley/rent-games.git)
+* git clone [https://github.com/franwanderley/rent-games.git](https://github.com/franwanderley/rent-games.git)
 * cd rent-games
 * npm install
 * precisa criar .env com as informações segundo env-example
